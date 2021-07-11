@@ -1,0 +1,46 @@
+method: bayes
+metric: 
+  name: mcc
+  goal: maximize
+parameters: 
+  warmup_steps:
+    min: 0
+    max: 500
+  gradient_accumulation_steps: 
+    min: 1 
+    max: 8
+  num_train_epochs: 
+    values:
+    - 1
+  params_classifier.dense.weight: 
+    min: 0 
+    max: 1e-3
+  params_classifier.dense.bias: 
+    min: 0 
+    max: 1e-3
+  params_classifier.out_proj.weight: 
+    min: 0 
+    max: 1e-3
+  params_classifier.out_proj.bias: 
+    min: 0 
+    max: 1e-3
+  weight_decay: 
+    min: 0 
+    max: 4e-2
+  layer_0-6: 
+    max: 6e-05 
+    min: 0.0
+  layer_12-18: 
+    max: 6e-05 
+    min: 0.0
+  layer_18-24: 
+    max: 6e-05
+    min: 0.0
+  layer_6-12: 
+    max: 6e-05
+    min: 0.0
+early_terminate: 
+  type: hyperband 
+  min_iter: 6
+program: CVHPOptSimpltransformers.py
+project: CVHPopt_Simpletransformers
